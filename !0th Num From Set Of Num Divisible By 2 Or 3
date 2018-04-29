@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long a , b , n;
+long long FindLcm(long long x)
+{
+    long long lcm = a*b/__gcd(a , b);
+    return ((x/a) + (x/b) - (x/lcm));
+}
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+    cin>>a>>b>>n;
+    long long beg = 0 , end = 20;
+	long long ans = 0;
+    while(beg<=end)
+    {
+    	long long mid = (beg+end)/2;
+    	long long u = FindLcm(mid);
+    	cout<<endl<<"Mid = "<<u<<endl;
+    	if(u>=n)
+    	{
+    		cout<<endl<<"We Find Ans = "<<mid<<endl;
+        	ans = mid;
+        	end = mid - 1;
+    	}
+    	else
+    	{
+        	beg = mid + 1;
+    	}
+    }
+    cout<<endl<<"Answer = "<<ans<<endl;
+    }
+}
